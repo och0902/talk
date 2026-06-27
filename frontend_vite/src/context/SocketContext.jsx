@@ -15,9 +15,8 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			// const socket = io('http://talk.ystory52.com:4510', {
-			const socket = io('http://localhost:4510', {
-			// const socket = io('https://chat-app-yt.onrender.com', {
+			const socketUrl = import.meta.env.VITE_SOCKET_URL || window.location.origin;
+			const socket = io(socketUrl, {
 				query: {
 					userId: authUser._id,
 				},
